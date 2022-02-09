@@ -54,7 +54,14 @@ const questions = [
 inquirer.prompt(questions)
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) { }
+// function writeToFile(fileName, data) { }
+.then((response) => { 
+    fs.writeFile('README.md', JSON.stringify(response), (err) => {
+        if (err){ 
+            console.log(err);
+        } console.log(`${questions.username} + your README has been generated.`)
+    });
+});
 
 // TODO: Create a function to initialize app
 function init() { }
