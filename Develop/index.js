@@ -130,10 +130,9 @@ const questions = [
     },
 ];
 
-//prompt question input into template
-inquirer.prompt(questions)
-    .then(({ username, email, title, description, license, command, test, installation, contributor }) => {
-        let readmeFormat = `# ${title}
+//function for README Format
+function writeREADME(response)=>
+    let readmeFormat = `# ${title}
         ## Table of Contents 
         *[Description](#description)
         *[Installation](#installation)
@@ -142,7 +141,7 @@ inquirer.prompt(questions)
         *[Contributor](#contributor)
 
         ## Description 
-        ${description}
+        ${response.description}
         Page is currently deployed at: <br/>
         https://${username}.github.io/${title}/ 
         <br/><br/>
@@ -150,28 +149,28 @@ inquirer.prompt(questions)
         https://github.com/${username}/${title}
 
         ## Installation
-        ${installation}
+        ${response.installation}
 
         ## License
-        ${license}
+        ${response.license}
 
         ## Test
-        ${test}
+        ${response.test}
 
         ## Contributors
-        ${contributor} 
+        ${response.contributor} 
         To contribute to this project, please contact me via: 
-         *GitHub: https://github.com/${username} 
-         *Email: ${email}
+        *GitHub: https//:github.com/${response.username} 
+        *Email: ${response.email}
         <br/><br/>`
-    });
+};
 
 // TODO: Create a function to write README file
-function makeHTML(fileName, response) {
-    fs.writeFile('README.md', response, (err) => {
+function makeHTML(fileName, userInput) {
+    fs.writeFile('README.md', writeREADME(userInput), (err) => {
         if (err) {
             console.log(err)
-        } 
+        }
         console.log(`${questions.username} + your ${fileName} has been generated.`);
     });
 };
@@ -179,9 +178,10 @@ function makeHTML(fileName, response) {
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions)
-        .then(function (response) {
-            makeHTML("README.md", response);
-    });
+        .then(function (userInput) {
+            console.log(userInput)
+            makeHTML("README.md", writeREADME(userInput));
+        });
 };
 
 // Function call to initialize app
