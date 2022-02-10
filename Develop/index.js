@@ -1,7 +1,7 @@
 //Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { title } = require('process');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 
 //Instructions for user 
 console.log("README GENERATOR")
@@ -17,7 +17,7 @@ const questions = [
             if (userInput) {
                 return true;
             } else {
-                console.log('Please enter a valid response to continue');
+                console.log('Please enter a valid response to continue.');
                 return false;
             }
         }
@@ -30,7 +30,7 @@ const questions = [
             if (userInput) {
                 return true;
             } else {
-                console.log('Please enter a valid response to continue');
+                console.log('Please enter a valid response to continue.');
                 return false;
             }
         }
@@ -43,7 +43,7 @@ const questions = [
             if (userInput) {
                 return true;
             } else {
-                console.log('Please enter a valid response to continue');
+                console.log('Please enter a valid response to continue.');
                 return false;
             }
         }
@@ -56,7 +56,7 @@ const questions = [
             if (userInput) {
                 return true;
             } else {
-                console.log('Please enter a valid response to continue');
+                console.log('Please enter a valid response to continue.');
                 return false;
             }
         }
@@ -65,13 +65,13 @@ const questions = [
         type: 'checkbox',
         message: 'What kind of license did you use for your project?',
         name: 'license',
-        choices: ['N/A', 'Apache 2.0', 'BOOST', 'Eclipse', 'GNU', 'IBM', 'ISCLicense', 'MIT', 'Perl', 'SIL', 'Unlicense'],
-        default: ['N/A'],
-        validate: userInput => {
-            if (userInput) {
+        choices: ['No License Used', 'Apache 2.0', 'BOOST', 'Eclipse', 'GNU', 'IBM', 'ISCLicense', 'MIT', 'Perl', 'SIL', 'Unlicense'],
+        default: ['No License Used'],
+        validate: licenseBadge => {
+            if (licenseBadge) {
                 return true;
             } else {
-                console.log('Please enter a valid response to continue');
+                console.log('Select a license used for the project.');
                 return false;
             }
         }
@@ -84,7 +84,7 @@ const questions = [
             if (userInput) {
                 return true;
             } else {
-                console.log('Please enter a valid response to continue');
+                console.log('Please enter a valid response to continue.');
                 return false;
             }
         }
@@ -97,7 +97,7 @@ const questions = [
             if (userInput) {
                 return true;
             } else {
-                console.log('Please enter a valid response to continue');
+                console.log('Please enter a valid response to continue.');
                 return false;
             }
         }
@@ -110,7 +110,7 @@ const questions = [
             if (userInput) {
                 return true;
             } else {
-                console.log('Please enter a valid response to continue');
+                console.log('Please enter a valid response to continue.');
                 return false;
             }
         }
@@ -123,51 +123,16 @@ const questions = [
             if (userInput) {
                 return true;
             } else {
-                console.log('Please enter a valid response to continue');
+                console.log('Please enter a valid response to continue.');
                 return false;
             }
         }
     },
 ];
 
-//function for README Format
-function writeREADME(response)=>
-    let readmeFormat = `# ${title}
-        ## Table of Contents 
-        *[Description](#description)
-        *[Installation](#installation)
-        *[License](#license)
-        *[Test](#test)
-        *[Contributor](#contributor)
-
-        ## Description 
-        ${response.description}
-        Page is currently deployed at: <br/>
-        https://${username}.github.io/${title}/ 
-        <br/><br/>
-        You can also check the repository at: <br/>
-        https://github.com/${username}/${title}
-
-        ## Installation
-        ${response.installation}
-
-        ## License
-        ${response.license}
-
-        ## Test
-        ${response.test}
-
-        ## Contributors
-        ${response.contributor} 
-        To contribute to this project, please contact me via: 
-        *GitHub: https//:github.com/${response.username} 
-        *Email: ${response.email}
-        <br/><br/>`
-};
-
 // TODO: Create a function to write README file
-function makeHTML(fileName, userInput) {
-    fs.writeFile('README.md', writeREADME(userInput), (err) => {
+function makeHTML(fileName, data) {
+    fs.writeFile(fileName, data, (err) => {
         if (err) {
             console.log(err)
         }
@@ -178,9 +143,9 @@ function makeHTML(fileName, userInput) {
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions)
-        .then(function (userInput) {
-            console.log(userInput)
-            makeHTML("README.md", writeREADME(userInput));
+        .then(function(response) {
+            console.log(response)
+            makeHTML("README.md", generateMarkdown(response));
         });
 };
 
