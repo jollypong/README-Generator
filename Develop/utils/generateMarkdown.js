@@ -1,54 +1,34 @@
-// // TODO: Create a function that returns a license badge based on which license is passed in
-// // If there is no license, return an empty string
-// function renderLicenseBadge(license) => { 
-//   if licenseBadge = () { 
-
-//   }
-// }
-
-// // TODO: Create a function that returns the license link
-// // If there is no license, return an empty string
-// function renderLicenseLink(license) {}
-
-// // TODO: Create a function that returns the license section of README
-// // If there is no license, return an empty string
-// function renderLicenseSection(license) {}
-
-// // TODO: Create a function to generate markdown for README
-
 //function for README Format
 function generateMarkdown(response) {
-  return `# ${title}<br/><br/>
-      ## Table of Contents 
-      *[Description](#description)
-      *[Installation](#installation)
-      *[License](#license)
-      *[Test](#test)
-      *[Contributor](#contributor)
+  return `# ${response.title}
+  ## License
+  <img src=https://img.shields.io/badge/License-${response.license}-blue.svg>
 
-      ## Description 
-      ${response.description}
-      Page is currently deployed at: <br/>
-      https://${username}.github.io/${title}/ 
-      <br/><br/>
-      You can also check the repository at: <br/>
-      https://github.com/${username}/${title}
+  ## Table of Contents 
+    *[Description](#description)
+    *[Installation](#installation)
+    *[Test](#test)
+    *[Contributor](#contributor)
 
-      ## Installation
-      ${response.installation}
+  ## Description 
+    ${response.description}
+    Page is currently deployed at: 
+    https://${response.username}.github.io/${response.title}/ 
+    
+    You can also check the repository at: 
+    https://github.com/${response.username}/${response.title}
 
-      ## License
-      ${response.license}
+  ## Installation
+    ${response.installation}
 
-      ## Test
-      ${response.test}
+  ## Test
+    ${response.test}
 
-      ## Contributors
-      ${response.contributor} 
-      To contribute to this project, please contact me via: 
-      *GitHub: https//:github.com/${response.username} 
-      *Email: ${response.email}
-      <br/><br/>`
+  ## Contributors
+    ${response.contributor} 
+    To contribute to this project, please contact me via: 
+    *GitHub: https//:github.com/${response.username} 
+    *Email: ${response.email}`
 };
 
-module.exports = generateMarkdown();
+module.exports = generateMarkdown;

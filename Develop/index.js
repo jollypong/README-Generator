@@ -2,6 +2,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown.js');
+const { Console } = require('console');
+
 
 //Instructions for user 
 console.log("README GENERATOR")
@@ -65,13 +67,12 @@ const questions = [
         type: 'checkbox',
         message: 'What kind of license did you use for your project?',
         name: 'license',
-        choices: ['No License Used', 'Apache 2.0', 'BOOST', 'Eclipse', 'GNU', 'IBM', 'ISCLicense', 'MIT', 'Perl', 'SIL', 'Unlicense'],
-        default: ['No License Used'],
-        validate: licenseBadge => {
-            if (licenseBadge) {
+        choices: ['No License Used', 'Apache 2.0', 'BOOST', 'Eclipse', 'IBM', 'MIT', 'Mozilla'],
+        validate: userChoice => {
+            if (userChoice) {
                 return true;
             } else {
-                console.log('Select a license used for the project.');
+                Console.log('Please make a selection')
                 return false;
             }
         }
@@ -136,14 +137,14 @@ function makeHTML(fileName, data) {
         if (err) {
             console.log(err)
         }
-        console.log(`${questions.username} + your ${fileName} has been generated.`);
+        console.log(`Your ${fileName} has been generated.`);
     });
 };
 
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions)
-        .then(function(response) {
+        .then(function (response) {
             console.log(response)
             makeHTML("README.md", generateMarkdown(response));
         });
