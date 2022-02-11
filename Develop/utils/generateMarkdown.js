@@ -15,10 +15,10 @@ function generateMarkdown(response) {
     ${response.description}
 
     Page is currently deployed at: 
-    [Deployed Link](https://${response.username}.github.io/${response.title}/) 
+    ['Deployed Link'](https://${response.username}.github.io/${response.title}/) 
     
     You can also check the repository at: 
-    [GitHub Repo](https://github.com/${response.username}/${response.title})
+    ['GitHub Repo'](https://github.com/${response.username}/${response.title})
 
   ## Installation
     ${response.installation}
@@ -36,8 +36,8 @@ function generateMarkdown(response) {
   
   ${response.contributor} 
 
-    *[GitHub] (https//:github.com/${response.username}) 
-    *[Email] ${response.email}`
+    *['GitHub'] (https//:github.com/${response.username}) 
+    *Email: ${response.email}`
 };
 
 module.exports = generateMarkdown;
