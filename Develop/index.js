@@ -105,7 +105,7 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'What is the installation process?',
+        message: 'What command should the user input to invoke the application?',
         name: 'installation',
         validate: userInput => {
             if (userInput) {

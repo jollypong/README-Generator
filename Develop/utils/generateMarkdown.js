@@ -6,17 +6,21 @@ function generateMarkdown(response) {
 
   ## Table of Contents 
     *[Description](#description)
+
     *[Installation](#installation)
+
     *[Test](#test)
+
     *[Contributor](#contributor)
 
   ## Description 
     ${response.description}
+    
     Page is currently deployed at: 
-    https://${response.username}.github.io/${response.title}/ 
+    [Deployed Link](https://${response.username}.github.io/${response.title}/) 
     
     You can also check the repository at: 
-    https://github.com/${response.username}/${response.title}
+    [GitHub Repo](https://github.com/${response.username}/${response.title})
 
   ## Installation
     ${response.installation}
@@ -24,8 +28,11 @@ function generateMarkdown(response) {
   ## Test
     ${response.test}
 
+  ## Screenshot
+
   ## Contributors
     ${response.contributor} 
+
     To contribute to this project, please contact me via: 
     *GitHub: https//:github.com/${response.username} 
     *Email: ${response.email}`
