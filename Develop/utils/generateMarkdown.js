@@ -6,16 +6,14 @@ function generateMarkdown(response) {
 
   ## Table of Contents 
     *[Description](#description)
-
     *[Installation](#installation)
-
+    *[Usage](#usage)
     *[Test](#test)
-
     *[Contributor](#contributor)
 
   ## Description 
     ${response.description}
-    
+
     Page is currently deployed at: 
     [Deployed Link](https://${response.username}.github.io/${response.title}/) 
     
@@ -25,17 +23,21 @@ function generateMarkdown(response) {
   ## Installation
     ${response.installation}
 
+  ## Usage
+    ${response.runCommand}
+
   ## Test
     ${response.test}
 
   ## Screenshot
 
   ## Contributors
-    ${response.contributor} 
+  Got any questions or want to contribute to this project? 
+  
+  ${response.contributor} 
 
-    To contribute to this project, please contact me via: 
-    *GitHub: https//:github.com/${response.username} 
-    *Email: ${response.email}`
+    *[GitHub] (https//:github.com/${response.username}) 
+    *[Email] ${response.email}`
 };
 
 module.exports = generateMarkdown;

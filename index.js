@@ -1,9 +1,7 @@
 //Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown.js');
-const { Console } = require('console');
-
+const generateMarkdown = require('./Develop/utils/generateMarkdown');
 
 //Instructions for user 
 console.log("README GENERATOR")
@@ -64,7 +62,7 @@ const questions = [
         }
     },
     {
-        type: 'checkbox',
+        type: 'list',
         message: 'What kind of license did you use for your project?',
         name: 'license',
         choices: ['No License Used', 'Apache 2.0', 'BOOST', 'Eclipse', 'IBM', 'MIT', 'Mozilla'],
@@ -80,7 +78,20 @@ const questions = [
     {
         type: 'input',
         message: 'What command should be run to install dependencies?',
-        name: 'command',
+        name: 'installation',
+        validate: userInput => {
+            if (userInput) {
+                return true;
+            } else {
+                console.log('Please enter a valid response to continue.');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        message: 'What command should the user input to invoke the application?',
+        name: 'runCommand',
         validate: userInput => {
             if (userInput) {
                 return true;
@@ -94,19 +105,6 @@ const questions = [
         type: 'input',
         message: 'What command should be used to run tests?',
         name: 'test',
-        validate: userInput => {
-            if (userInput) {
-                return true;
-            } else {
-                console.log('Please enter a valid response to continue.');
-                return false;
-            }
-        }
-    },
-    {
-        type: 'input',
-        message: 'What command should the user input to invoke the application?',
-        name: 'installation',
         validate: userInput => {
             if (userInput) {
                 return true;
