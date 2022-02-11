@@ -1,4 +1,4 @@
-# asdfawdf
+# READMEGenerator
 ## License
 <img src=https://img.shields.io/badge/License-No License Used-blue.svg>
 
@@ -11,43 +11,48 @@
 
 [Test](#test)
 
+[Screenshot](#screenshot)
+
 [Contributors](#contributors)
 
 ## Description 
-asdfasdfa
+This application was created using NodeJS and Javascript.It generates a README.md file quickly and easily using command-line inputs from the user.
 
 Page is currently deployed at: 
 
-['Deployed Page'](https://asdfasdf.github.io/asdfawdf/) 
+['Deployed Page'](https://Jollypong.github.io/READMEGenerator/) 
     
 You can also check the repository at: 
 
-['GitHub Repo'](https://github.com/asdfasdf/asdfawdf)
+['GitHub Repo'](https://github.com/Jollypong/READMEGenerator)
 
 ## Installation
+Please note, you will be required to install NodeJS in order for this application to function.
+
 Following code is required for installation: 
 
-    asdfasdfasd
+    npm init -y , npm install
 
 ## Usage
   In order to use this application, please run following command: 
 
-    sadfasdfasdf
+    node index.js
 
 ## Test
   In order for testing please follow below code
 
-    asdfasdfasdf
+    N/A
 
 ## Screenshot
-
+![screenshot](/assets/images/READMEGeneratorScreenshot.png)
 ## Contributors
 
-asdfasdfasdfa 
+Joe Lee 
 
 Got any questions or want to contribute to this project? 
+
 Contact me via: 
 
-*[asdfasdf](https//:github.com/asdfasdf) 
+*[Jollypong](https//:github.com/Jollypong) 
 
-*Email: asdfasdf
+*Email: joeleegc@gmail.com

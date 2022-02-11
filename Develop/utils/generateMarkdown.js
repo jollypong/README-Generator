@@ -29,6 +29,8 @@ You can also check the repository at:
 ['GitHub Repo'](https://github.com/${response.username}/${response.title})
 
 ## Installation
+Please note, you will be required to install NodeJS in order for this application to function.
+
 Following code is required for installation: 
 
     ${response.installation}
@@ -50,7 +52,8 @@ Following code is required for installation:
 ${response.contributor} 
 
 Got any questions or want to contribute to this project? 
-Contact me via: 
+
+Contact me @: 
 
 *[${response.username}](https//:github.com/${response.username}) 
 
